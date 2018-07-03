@@ -16,25 +16,13 @@ Code Breaker game using JavaScript. Based off the board game Mastermind, the gam
 To get set up locally, run the following commands:
 
 ```
-npm install
-npm start
+yarn install
+yarn start
 ```
 
 # Live Demo
 
 https://cristytarantino.github.io/CodeBreakerProject to see a working version of this project. Feel free to alter and expand on this project to make your own twist on the Code Breaker game once you've completed the steps.
-
-You'll build a Code Breaker game that you can play and show off to others as an example of your abilities in JavaScript.
-
-# Setup Instructions
-
-Once you have cloned the forked repository, go into the directory containing the project and look for the `/src` directory. This is the directory where you will be making changes when you start the following step-by-step instructions. You can simply open those files in any text editor to get started.
-
-In this project, all of your changes will happen in the `/src/assets/main.js` file.
-
-# Tasks
-
-Complete the following tasks to finish this project.
 
 ## Create `setHiddenFields` function
 
@@ -107,13 +95,3 @@ Create a function `showReplay` with no parameters. This function will change the
 ## Add `showAnswer` and `showReplay` to win / lose conditions
 
 When a player wins in addition to `setMessage` call, they should also call `showAnswer` passing `true` for its parameter, and finally make a call to `showReplay`. When the player loses, they should call `showAnswer` with `false` for the parameter and then `showReplay`.
-
-# Next Steps
-
-Now that you've completed this project, you should make it available online so you can share your progress with others! One way to do this is by using GitHub Pages.
-
-To deploy your `/src` directory to GitHub Pages, be sure to commit all of your changes and make a new branch called `gh-pages`. Once you are checked in to the `gh-pages` branch, run the following command:
-
-```git subtree push --prefix src origin gh-pages```
-
-This will push the `src` folder up to GitHub on the `gh-pages` branch. After that, you should be able to open up `http://username.github.io/CodeBreakerProject`, where `username` is your GitHub username.
