@@ -1,13 +1,17 @@
-let answer = document.getElementById('answer');
-let attempt = document.getElementById('attempt');
-
 const MAX_NUM = 10000;
+
+function $(selector, container) {
+  return (container || document).querySelector(selector);
+}
+
+let answer = $('#answer');
+let attempt = $('#attempt');
 
 /**
  * guess The main method of the game
  */
 function guess() {
-  let input = document.getElementById('user-guess');
+  let input = $('#user-guess');
 
   //Only set the answer and attempt hidden inputs when they aren't already set
   if (answer.value === '' || attempt.value === '') {

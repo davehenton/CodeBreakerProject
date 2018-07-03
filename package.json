@@ -7,7 +7,7 @@
   "homepage": "https://cristytarantino.github.io/CodeBreakerProject/",
   "scripts": {
     "start": "browser-sync start --server ./src --files ./src",
-    "test": "mocha -t 20000 --compilers js:babel-register test/*.spec.js",
+    "test": "mocha -t 20000 --compilers js:babel-register test/*.test.js",
     "test-watch": "npm test -- --bail --watch",
     "deploy:github-pages": "git subtree push --prefix src origin gh-pages",
     "cover": "nyc mocha -t 20000 test/*.spec.js"

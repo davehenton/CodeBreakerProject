@@ -3,15 +3,16 @@ const fs = require('fs');
 const jsdom = require('jsdom');
 const {assert} = require('chai');
 const sinon = require('sinon');
-const srcScript = fs.readFileSync('./src/assets/main.js', 'utf8');
+const srcScript = fs.readFileSync('./src/js/game.js', 'utf8');
 
 const scriptRegex = /<\s*script[\s\S]*?>[\s\S]*?<\s*\/\s*script\s*>/ig;
 
 // HTML Page
 let srcHtml = fs.readFileSync('./src/index.html', 'utf8');
+//remove every assets script from html page
 srcHtml = srcHtml.replace(
   scriptRegex,
-  (tag) => !/src\s*=['"][^'"]*assets\//i.test(tag) ? tag : ''
+  (tag) => !/src\s*=['"][^'"]*js\//i.test(tag) ? tag : ''
 );
 
 // JSDOM Setup
