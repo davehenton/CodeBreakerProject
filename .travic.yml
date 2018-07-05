@@ -3,3 +3,7 @@ node_js:
   - 8.11.3
 script:
   - "npm run test"
+# safelist
+branches:
+  only:
+  - master
