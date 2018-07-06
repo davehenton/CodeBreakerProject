@@ -68,7 +68,7 @@ window.game = (function() {
 
     // Make sure the hidden input answer's value is exactly 4 characters long
     while (answer.value.length < 4) {
-      answer.value = `0${answer.value}`;
+      answer.value = '0' + answer.value;
     }
   }
 
@@ -143,7 +143,7 @@ window.game = (function() {
   }
 
   return {
-    // Get the Singvaron instance if one exists
+    // Get the Singleton instance if one exists
     // or create one if it doesn't
     start: function () {
 

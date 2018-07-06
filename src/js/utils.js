@@ -1,4 +1,5 @@
 'use strict';
+/* eslint no-unused-vars: 0 */
 
 /**
  * $ returned the document or container selector specified
@@ -41,7 +42,8 @@ function validateStringLength(string, number) {
 
 /**
  * toggleClass Toggles the className of a selector
- * @param {object} querySelector The query selector on witch perform the toggle function
+ * @param {object} querySelector The query selector
+ *                 on witch perform the toggle function
  * @param {string} className The name of the class to toggle
  */
 function toggleClass(querySelector, className) {
@@ -49,14 +51,15 @@ function toggleClass(querySelector, className) {
     querySelector.classList.toggle(className);
   } else {
     // For IE9
-    var classes = querySelector.className.split(" ");
+    var classes = querySelector.className.split(' ');
     var i = classes.indexOf(className);
 
-    if(i >= 0)
+    if (i >= 0) {
       classes.splice(i, 1);
-    else
+    } else {
       classes.push(className);
-    querySelector.className = classes.join(" ");
+    }
+    querySelector.className = classes.join(' ');
   }
 }
 
