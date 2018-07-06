@@ -12,10 +12,10 @@ window.game = (function() {
    */
   function init() {
     fragment = $('#game').innerHTML;
-    start();
+    setup();
   }
 
-  function start() {
+  function setup() {
     answer = $('#answer');
     attempt = $('#attempt');
     $('#guess').addEventListener('click', guess);
@@ -28,14 +28,16 @@ window.game = (function() {
   function guess() {
     var input = $('#user-guess');
 
-    //Only set the answer and attempt hidden inputs when they aren't already set
+    // Only set the answer and attempt hidden inputs
+    // when they aren't already set
     if (answer.value === '' || attempt.value === '') {
       setHiddenFields();
   }
 
-    //validateStringLength if the length of the input is not 4
+    // validateStringLength if the length of the input is not 4
     if (!validateStringLength(input.value, 4)) {
-      // use the `setMessage` function to set the `message` label to `"Guesses must be exactly 4 characters long."`,
+      // use the `setMessage` function to set the `message` label
+      // to `"Guesses must be exactly 4 characters long."`,
       setMessage($('#message'), 'Guesses must be exactly 4 characters long.');
       return;
     }
@@ -43,27 +45,32 @@ window.game = (function() {
     // increment the number of attempts
     attempt.value++;
 
-    if (getResults(input.value)) {     //if the user has guessed correctly
+    // if the user has guessed correctly
+    if (getResults(input.value)) {
       setMessage($('#message'), 'You Win! :)');
       showAnswer(true);
       showReplay();
-    } else if (attempt.value >= 10) { //if the user has exceed the number of attempts
+    } else if (attempt.value >= 10) {
+      // if the user has exceed the number of attempts
       setMessage($('#message'), 'You Lose! :(');
       showAnswer(false);
       showReplay();
     } else {
-      setMessage($('#message'), 'Incorrect, try again.'); //otherwise keep playing
+      // otherwise keep playing
+      setMessage($('#message'), 'Incorrect, try again.');
     }
   }
 
   /**
-   * setHiddenFields Set the answer variable equal to a randomly generated whole number between 0 and 9999
+   * setHiddenFields Set the answer variable equal
+   *                 to a randomly generated whole number between 0 and 9999
    */
   function setHiddenFields() {
     // Set the hidden input attempt's value to zero
     attempt.value = 0;
 
-    // Sets the answer variable equal to a randomly generated whole number between 0 and 9999
+    // Sets the answer variable equal
+    // to a randomly generated whole number between 0 and 9999
     answer.value = getRandomInt(MAX_NUM).toString();
 
     // Make sure the hidden input answer's value is exactly 4 characters long
@@ -73,43 +80,49 @@ window.game = (function() {
   }
 
   /**
-   * getResults Add the results of the user's guess to our `results` div's `innerHTML`
-   * @param input The value the user guessed
-   * @returns {boolean} If all characters were guessed correctly, the function return `true`, otherwise `false`
+   * getResults Add the results of the user's guess
+   *            to our `results` div's `innerHTML`
+   * @param { string } input The value the user guessed
+   * @return { boolean } If all characters were guessed correctly,
+   *                     the function return `true`, otherwise `false`
    */
   function getResults(input) {
-    //create html to insert into #results
-    var html = `<div class="row"><span class="col-md-6">${input}</span><div class="col-md-6">`;
+    // create html to insert into #results
+    var html = '<div class="row"><span class="col-md-6">' +
+                input +
+               '</span><div class="col-md-6">';
 
-    //for each character
+    // for each character
     for (var i = 0; i < input.length; i++) {
       if (input.charAt(i) === answer.value.charAt(i)) {
 
-        //if the character is in the correct position in the `answer`
-        html += '<span class="glyphicon glyphicon-ok"></span>'; //add icon ok
+        // if the character is in the correct position in the `answer`
+        html += '<span class="glyphicon glyphicon-ok"></span>'; // add icon ok
       } else if (answer.value.indexOf(input.charAt(i)) > -1) {
 
-        //if the character is in the `answer` but isn't in the right position
-        html += '<span class="glyphicon glyphicon-transfer"></span>'; //add icon transfer
+        // if the character is in the `answer` but isn't in the right position
+        // add icon transfer
+        html += '<span class="glyphicon glyphicon-transfer"></span>';
       } else {
 
-        //if the number isn't in the `answer` at all
-        html += '<span class="glyphicon glyphicon-remove"></span>'; //add icon remove
+        // if the number isn't in the `answer` at all
+        // add icon remove
+        html += '<span class="glyphicon glyphicon-remove"></span>';
       }
     }
 
-    //close html tags
+    // close html tags
     html += '</div></div>';
 
-    //append the html to the #return element
+    // append the html to the #return element
     $('#results').innerHTML += html;
 
     return input === answer.value;
   }
 
   /**
-   * showAnswer Display the Answer and updates the UI according to the parameter value
-   * @param success true if the player has won, false otherwise
+   * showAnswer Display the Answer and updates the UI accordingly
+   * @param { boolean } success true if the player has won, false otherwise
    */
   function showAnswer(success) {
     var code;
@@ -125,11 +138,12 @@ window.game = (function() {
   }
 
   /**
-   * showReplay Change the UI so the user can start over after they win or lose the game
+   * showReplay Change the UI so the user can start over
+   * after they win or lose the game
    */
   function showReplay() {
-    toggleClass($('#guessing-div'), "hidden");
-    toggleClass($('#replay-div'), "hidden");
+    toggleClass($('#guessing-div'), 'hidden');
+    toggleClass($('#replay-div'), 'hidden');
   }
 
   /**
@@ -139,13 +153,13 @@ window.game = (function() {
     attempt.value = '';
     answer.value = '';
     $('#game').innerHTML = fragment;
-    start();
+    setup();
   }
 
   return {
     // Get the Singleton instance if one exists
     // or create one if it doesn't
-    start: function () {
+    start: function() {
 
       if ( !instance ) {
         instance = init();
