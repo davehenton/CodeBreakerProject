@@ -53,6 +53,12 @@ module.exports = function(config) {
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: ['mocha', 'coverage'],
 
+    coverageReporter: {
+      type: 'lcov',
+      dir: 'coverage/',
+      subdir: '.',
+    },
+
 
     // web server port
     port: 9876,
@@ -63,11 +69,16 @@ module.exports = function(config) {
 
 
     // level of logging
-    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+    // possible values: config.LOG_DISABLE
+    // || config.LOG_ERROR
+    // || config.LOG_WARN
+    // || config.LOG_INFO
+    // || config.LOG_DEBUG
     logLevel: config.LOG_INFO,
 
 
-    // enable/disable watching file and executing tests whenever any file changes
+    // enable/disable watching file
+    // and executing tests whenever any file changes
     autoWatch: false,
 
 
