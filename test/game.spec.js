@@ -1,11 +1,5 @@
 'use strict';
 
-//util function
-function getProperty(selector, property){
-  let elem = $(selector);
-  return window.getComputedStyle(elem,null).getPropertyValue(property);
-}
-
 describe('Calculator', function() {
   // // inject the HTML fixture for the tests
   beforeEach(function() {
@@ -22,8 +16,7 @@ describe('Calculator', function() {
     fixture.cleanup();
   });
 
-  it('A', function() {
-    // $('#guess').click();
+  it('should set the `value` of element `answer` to empty string', function() {
     $('#answer').value.should.equal('');
   });
 
@@ -194,8 +187,8 @@ describe('Calculator', function() {
       $('#user-guess').value = $('#answer').value;
       guess.click();
 
-      assert(getProperty("#guessing-div", "display") === "none", '`guessing-div`\'s `style` was not set to "display:none".');
-      assert(getProperty("#replay-div", "display") === "block", '`replay-div`\'s `style` was not set to "display:block".');
+      assert($("#guessing-div").className.split(" ").indexOf('hidden') !== -1, '`guessing-div`\'s `class` was not set to "hidden" class.');
+      assert($("#replay-div").className.split(" ").indexOf('hidden') === -1, '`replay-div`\'s `class` was not set to "display:block".');
     });
 
     it('should set element `guessing-div`\'s `style` to "display:none" element `replay-div`\'s `style` to "display:block" if lost. @showReplay', function () {
@@ -206,8 +199,8 @@ describe('Calculator', function() {
         $('#guess').click();
       }
 
-      assert(getProperty("#guessing-div", "display") === "none", '`guessing-div`\'s `style` was not set to "display:none".');
-      assert(getProperty("#replay-div", "display") === "block", '`replay-div`\'s `style` was not set to "display:block".');
+      assert($("#guessing-div").className.split(" ").indexOf('hidden') !== -1, '`guessing-div`\'s `class` was not set to "hidden" class.');
+      assert($("#replay-div").className.split(" ").indexOf('hidden') === -1, '`replay-div`\'s `class` was not set to "display:block".');
     });
   });
 
@@ -230,8 +223,8 @@ describe('Calculator', function() {
       assert($('#results').children.length === 1, 'the results and guesses column html where not removed from the dom');
     });
     it('should set element `guessing-div`\'s `style` to "display:block" element `replay-div`\'s `style` to "display:none" if lost. @reset', function () {
-      assert(getProperty("#guessing-div", "display") === "block", '`guessing-div`\'s `style` was not set to "display:block".');
-      assert(getProperty("#replay-div", "display") === "none", '`replay-div`\'s `style` was not set to "display:none".');
+      assert($("#guessing-div").className.split(" ").indexOf('hidden') === -1, '`guessing-div`\'s `class` was not set to "hidden" class.');
+      assert($("#replay-div").className.split(" ").indexOf('hidden') !== -1, '`replay-div`\'s `class` was not set to "display:block".');
     });
   });
 });

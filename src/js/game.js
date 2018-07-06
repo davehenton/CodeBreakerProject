@@ -33,8 +33,10 @@ window.game = (function() {
       setHiddenFields();
   }
 
-    //validateInput if the length of the input is not 4
-    if (!validateInput(input.value)) {
+    //validateStringLength if the length of the input is not 4
+    if (!validateStringLength(input.value, 4)) {
+      // use the `setMessage` function to set the `message` label to `"Guesses must be exactly 4 characters long."`,
+      setMessage($('#message'), 'Guesses must be exactly 4 characters long.');
       return;
     }
 
@@ -42,25 +44,16 @@ window.game = (function() {
     attempt.value++;
 
     if (getResults(input.value)) {     //if the user has guessed correctly
-      setMessage('You Win! :)');
+      setMessage($('#message'), 'You Win! :)');
       showAnswer(true);
       showReplay();
     } else if (attempt.value >= 10) { //if the user has exceed the number of attempts
-      setMessage('You Lose! :(');
+      setMessage($('#message'), 'You Lose! :(');
       showAnswer(false);
       showReplay();
     } else {
-      setMessage('Incorrect, try again.'); //otherwise keep playing
+      setMessage($('#message'), 'Incorrect, try again.'); //otherwise keep playing
     }
-  }
-
-  /**
-   * getRandomInt randomly generated an integer between 0 and max number
-   * @param max maximum number within which generate the random number
-   * @returns {number} the random number
-   */
-  function getRandomInt(max) {
-    return Math.floor(Math.random() * Math.floor(max));
   }
 
   /**
@@ -77,29 +70,6 @@ window.game = (function() {
     while (answer.value.length < 4) {
       answer.value = `0${answer.value}`;
     }
-  }
-
-  /**
-   * setMessage Set the #message label to whatever is provided to the parameter
-   * @param message
-   */
-  function setMessage(message) {
-    $('#message').innerHTML = message;
-  }
-
-  /**
-   * validateInput Validates the length of the parameter input
-   * @param input The String that needs validating
-   * @returns {boolean} If the parameter has a `length` of 4, return `true` —
-   *                    otherwise return `false`
-   */
-  function validateInput(input) {
-    if (input.length !== 4) {
-      // use the `setMessage` function to set the `message` label to `"Guesses must be exactly 4 characters long."`,
-      setMessage('Guesses must be exactly 4 characters long.');
-      return false;
-    }
-    return true;
   }
 
   /**
@@ -158,8 +128,8 @@ window.game = (function() {
    * showReplay Change the UI so the user can start over after they win or lose the game
    */
   function showReplay() {
-    $('#guessing-div').style.display = 'none';
-    $('#replay-div').style.display = 'block';
+    toggleClass($('#guessing-div'), "hidden");
+    toggleClass($('#replay-div'), "hidden");
   }
 
   /**
