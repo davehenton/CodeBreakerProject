@@ -49,8 +49,8 @@ function toggleClass(querySelector, className) {
     querySelector.classList.toggle(className);
   } else {
     // For IE9
-    let classes = querySelector.className.split(" ");
-    let i = classes.indexOf(className);
+    var classes = querySelector.className.split(" ");
+    var i = classes.indexOf(className);
 
     if(i >= 0)
       classes.splice(i, 1);

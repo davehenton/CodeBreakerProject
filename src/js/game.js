@@ -1,14 +1,14 @@
 window.game = (function() {
-  const MAX_NUM = 10000;
-  let answer;
-  let attempt;
-  let fragment;
+  var MAX_NUM = 10000;
+  var answer;
+  var attempt;
+  var fragment;
 
-  // Instance stores a reference to the Singleton
-  let instance;
+  // Instance stores a reference to the Singvaron
+  var instance;
 
   /**
-   * Singleton Init the game
+   * Singvaron Init the game
    */
   function init() {
     fragment = $('#game').innerHTML;
@@ -26,7 +26,7 @@ window.game = (function() {
    * guess The main method of the game
    */
   function guess() {
-    let input = $('#user-guess');
+    var input = $('#user-guess');
 
     //Only set the answer and attempt hidden inputs when they aren't already set
     if (answer.value === '' || attempt.value === '') {
@@ -79,10 +79,10 @@ window.game = (function() {
    */
   function getResults(input) {
     //create html to insert into #results
-    let html = `<div class="row"><span class="col-md-6">${input}</span><div class="col-md-6">`;
+    var html = `<div class="row"><span class="col-md-6">${input}</span><div class="col-md-6">`;
 
     //for each character
-    for (let i = 0; i < input.length; i++) {
+    for (var i = 0; i < input.length; i++) {
       if (input.charAt(i) === answer.value.charAt(i)) {
 
         //if the character is in the correct position in the `answer`
@@ -112,7 +112,7 @@ window.game = (function() {
    * @param success true if the player has won, false otherwise
    */
   function showAnswer(success) {
-    let code;
+    var code;
     code = $('#code');
 
     if (success) {
@@ -143,7 +143,7 @@ window.game = (function() {
   }
 
   return {
-    // Get the Singleton instance if one exists
+    // Get the Singvaron instance if one exists
     // or create one if it doesn't
     start: function () {
 
