@@ -1,11 +1,12 @@
-window.game = (function() {
+window.game = (function game() {
   var MAX_NUM = 10000;
+  var reset;
   var answer;
   var attempt;
   var fragment;
 
   // Instance stores a reference to the Singvaron
-  var game;
+  var singleInstance;
 
   /**
    * setHiddenFields Set the answer variable equal
@@ -147,12 +148,12 @@ window.game = (function() {
    * Reload the page
    * @return { void }
    */
-  function reset() {
+  reset = function resetGame() {
     attempt.value = '';
     answer.value = '';
     $('#game').innerHTML = fragment;
     setup();
-  }
+  };
 
   /**
    * Singvaron Init the game
@@ -168,12 +169,12 @@ window.game = (function() {
      * Get the Singleton instance if one exists or create one if it doesn't
      * @return { object } game instance
      */
-    start: function() {
-      if ( !game ) {
-        game = init();
+    start: function start() {
+      if ( !singleInstance ) {
+        singleInstance = init();
       }
 
-      return game;
+      return singleInstance;
     }
   };
 })();

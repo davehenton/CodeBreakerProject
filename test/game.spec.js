@@ -1,5 +1,7 @@
 'use strict';
 
+/* eslint func-names: 0 */
+
 describe('Calculator', function() {
   // // inject the HTML fixture for the tests
   beforeEach(function() {
@@ -25,8 +27,9 @@ describe('Calculator', function() {
       assert(typeof $('#answer').value === 'string', '`answer.value` is not of type string.');
 
       var array = [];
+      var i = 0;
 
-      for (var i = 0; i < 10; i++) {
+      for (i; i < 10; i++) {
         $('#guess').click();
         array.push($('#answer').value);
         $('#reload').click();
@@ -37,7 +40,7 @@ describe('Calculator', function() {
       assert(array.length > 0, '`setHiddenFields` didn\'t change the `value` of the `answer` hidden field. `setHiddenFields` should change the `answer.value` variable.');
       var current = null;
       var duplicates = 0;
-      for (var i = 0; i < array.length; i++) {
+      for (i = 0; i < array.length; i++) {
         assert(array[i] >= 0 && array[i] <= 9999, '`answer.value` was ' + array[i] + ' which is not between 0 and 9999.');
         assert(array[i].indexOf('.') === -1, '`answer.value` was ' + array[i] + ' which is not a whole number.');
         if (array[i] !== current) {
@@ -50,8 +53,9 @@ describe('Calculator', function() {
     });
     it('should set the `value` of element `answer` to a number exactly 4 characters long. @answerLength', function() {
       var array = [];
+      var i = 0;
 
-      for (var i = 0; i < 10; i++) {
+      for (i; i < 10; i++) {
         $('#guess').click();
         array.push($('#answer').value);
         $('#reload').click();
@@ -60,7 +64,7 @@ describe('Calculator', function() {
       array.sort();
 
       assert(array.length > 0, '`setHiddenFields` didn\'t change the `value` of the `answer` hidden field. `setHiddenFields` should change the `answer.value` variable.');
-      for (var i = 0; i < array.length; i++) {
+      for (i = 0; i < array.length; i++) {
         assert(array[i].length === 4, 'The `value` of the element `answer` was ' + array[i] + ' which is not exactly 4 characters long.');
       }
     });
