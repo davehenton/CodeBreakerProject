@@ -1,6 +1,6 @@
 env:
   global:
-    - CC_TEST_REPORTER_ID=CC_TEST_REPORTER_ID
+    - CC_TEST_REPORTER_ID=e812bdbf77a91be221c7435cbdfcdeb869b16af207fc3b03a944ae513f26e9f0
 language: node_js
 node_js:
   - 8
@@ -14,4 +14,4 @@ script:
   - yarn test
 
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - ./cc-test-reporter after-build -d --exit-code $TRAVIS_TEST_RESULT
