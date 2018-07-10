@@ -12,6 +12,12 @@
       "getRandomInt": true,
       "setMessage": true,
       "toggleClass": true,
-      "validateStringLength": true
+      "validateStringLength": true,
+      "assert": true,
+      "it": true,
+      "describe": true,
+      "beforeEach": true,
+      "afterEach": true,
+      "fixture": true
     }
 }
