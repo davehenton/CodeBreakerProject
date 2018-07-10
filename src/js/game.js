@@ -1,9 +1,20 @@
 window.game = (function game() {
   var MAX_NUM = 10000;
+
+  var fragment;
+
   var reset;
+  var guess;
+
+  var message;
+  var results;
   var answer;
   var attempt;
-  var fragment;
+  var code;
+  var guessingDiv;
+  var replayDiv;
+  var userGuess;
+
 
   // Instance stores a reference to the Singvaron
   var singleInstance;
@@ -60,7 +71,7 @@ window.game = (function game() {
     html += '</div></div>';
 
     // append the html to the #return element
-    $('#results').innerHTML += html;
+    results.innerHTML += html;
 
     return input === answer.value;
   }
@@ -71,13 +82,10 @@ window.game = (function game() {
    * @return { void }
    */
   function showAnswer(success) {
-    var code;
-    code = $('#code');
-
     if (success) {
-      code.className += ' success';
+      toggleClass(code, 'success');
     } else {
-      code.className += ' failure';
+      toggleClass(code, 'failure');
     }
 
     code.innerHTML = answer.value;
@@ -89,17 +97,15 @@ window.game = (function game() {
    * @return { void }
    */
   function showReplay() {
-    toggleClass($('#guessing-div'), 'hidden');
-    toggleClass($('#replay-div'), 'hidden');
+    toggleClass(guessingDiv, 'hidden');
+    toggleClass(replayDiv, 'hidden');
   }
 
   /**
    * guess The main method of the game
    * @return { void }
    */
-  function guess() {
-    var input = $('#user-guess');
-
+  guess = function play() {
     // Only set the answer and attempt hidden inputs
     // when they aren't already set
     if (answer.value === '' || attempt.value === '') {
@@ -107,10 +113,10 @@ window.game = (function game() {
     }
 
     // validateStringLength if the length of the input is not 4
-    if (!validateStringLength(input.value, 4)) {
+    if (!validateStringLength(userGuess.value, 4)) {
       // use the `setMessage` function to set the `message` label
       // to `"Guesses must be exactly 4 characters long."`,
-      setMessage($('#message'), 'Guesses must be exactly 4 characters long.');
+      setMessage(message, 'Guesses must be exactly 4 characters long.');
       return;
     }
 
@@ -118,20 +124,20 @@ window.game = (function game() {
     attempt.value++;
 
     // if the user has guessed correctly
-    if (getResults(input.value)) {
-      setMessage($('#message'), 'You Win! :)');
+    if (getResults(userGuess.value)) {
+      setMessage(message, 'You Win! :)');
       showAnswer(true);
       showReplay();
     } else if (attempt.value >= 10) {
       // if the user has exceed the number of attempts
-      setMessage($('#message'), 'You Lose! :(');
+      setMessage(message, 'You Lose! :(');
       showAnswer(false);
       showReplay();
     } else {
       // otherwise keep playing
-      setMessage($('#message'), 'Incorrect, try again.');
+      setMessage(message, 'Incorrect, try again.');
     }
-  }
+  };
 
   /**
    * Set up the game
@@ -140,6 +146,12 @@ window.game = (function game() {
   function setup() {
     answer = $('#answer');
     attempt = $('#attempt');
+    message = $('#message');
+    results = $('#results');
+    code = $('#code');
+    guessingDiv = $('#guessing-div');
+    replayDiv = $('#replay-div');
+    userGuess = $('#user-guess');
     $('#guess').addEventListener('click', guess);
     $('#reload').addEventListener('click', reset);
   }
