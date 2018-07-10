@@ -3,8 +3,8 @@
 # JavaScript "Code Breaker" Game
 
 [![Build Status](https://travis-ci.org/CristyTarantino/CodeBreakerProject.svg?branch=master)](https://travis-ci.org/CristyTarantino/CodeBreakerProject)
-[![Maintainability](https://api.codeclimate.com/v1/badges/3ea4160e9880b2ce704d/maintainability)](https://codeclimate.com/github/CristyTarantino/CodeBreakerProject/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/3ea4160e9880b2ce704d/test_coverage)](https://codeclimate.com/github/CristyTarantino/CodeBreakerProject/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/b8b43e6770e4f815988c/maintainability)](https://codeclimate.com/github/CristyTarantino/CodeBreakerProject/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/b8b43e6770e4f815988c/test_coverage)](https://codeclimate.com/github/CristyTarantino/CodeBreakerProject/test_coverage)
 ![Dependencies](https://david-dm.org/CristyTarantino/CodeBreakerProject.svg)
 
 Code Breaker game using JavaScript. Based off the board game Mastermind, the game will randomly generate a hidden code and the player gets 10 attempts to guess that code based on provided feedback.
