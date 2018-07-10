@@ -1,0 +1,17 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "extends": "eslint-config-es5",
+    "parserOptions": {
+        "ecmaVersion": 2015
+    },
+    "globals": {
+      "$": true,
+      "getRandomInt": true,
+      "setMessage": true,
+      "toggleClass": true,
+      "validateStringLength": true
+    }
+}

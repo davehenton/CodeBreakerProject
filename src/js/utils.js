@@ -1,4 +1,5 @@
 'use strict';
+
 /* eslint no-unused-vars: 0 */
 
 /**
@@ -22,8 +23,10 @@ function getRandomInt(max) {
 
 /**
  * setMessage Set the #message label to whatever is provided to the parameter
- * @param {object} querySelector
- * @param {string} message
+ * @param {object} querySelector The query selector
+ *                 on witch perform the setMessage function
+ * @param {string} message A message to write in the querySelector
+ * @return { void }
  */
 function setMessage(querySelector, message) {
   querySelector.innerHTML = message;
@@ -45,6 +48,7 @@ function validateStringLength(string, number) {
  * @param {object} querySelector The query selector
  *                 on witch perform the toggle function
  * @param {string} className The name of the class to toggle
+ * @return { void }
  */
 function toggleClass(querySelector, className) {
   if (querySelector.classList) {

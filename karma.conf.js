@@ -30,9 +30,8 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'src/js/*.js': ['babel', 'coverage'],
-      'test/**/*.spec.js': ['babel'],
-      'test/*.html': ['html2js'],
+      'src/js/*.js': ['coverage'],
+      'test/*.html': ['html2js']
     },
 
     babelPreprocessor: {
@@ -93,6 +92,6 @@ module.exports = function(config) {
 
     // Concurrency level
     // how many browser should be started simultaneous
-    concurrency: Infinity,
+    concurrency: Infinity
   });
 };
